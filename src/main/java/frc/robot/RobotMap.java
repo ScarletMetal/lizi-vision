@@ -8,5 +8,6 @@ public class RobotMap {
 
     public static final int DRIVE_RIGHT_1 = 1;
     public static final int DRIVE_RIGHT_2 = 4;
+
   }
 }
