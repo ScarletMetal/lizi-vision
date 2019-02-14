@@ -7,14 +7,17 @@
 
 package frc.robot;
 
+import com.spikes2212.dashboard.DashBoardController;
 import com.spikes2212.genericsubsystems.drivetrains.TankDrivetrain;
+import com.spikes2212.genericsubsystems.drivetrains.commands.OrientWithPID;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class Robot extends TimedRobot {
     public static OI oi;
-
+    public static SmartDashboard dbc;
     public static TankDrivetrain drivetrain;
 
     @Override
@@ -25,6 +28,10 @@ public class Robot extends TimedRobot {
                 SubsystemComponents.Drivetrain.RIGHT::set);
 
         oi = new OI();
+        dbc.putData("Orient With Vision",new OrientWithPID(drivetrain,SubsystemComponents.Drivetrain.GYRO,
+                ImageProcessing.GET_ANGLE_TO_LARGEST_X,SubsystemConstants.Drivetrain.VISION_SETTINGS
+                ,360,true));
+
     }
 
 
